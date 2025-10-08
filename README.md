@@ -17,12 +17,15 @@ Use the files directly with your existing Oracle tools and environment
 contains DDL statements for creating database tables. Each line is a JSON object with:      
 &nbsp;&nbsp;&nbsp;&nbsp;`table`: Table name    
 &nbsp;&nbsp;&nbsp;&nbsp;`sql`: CREATE TABLE statement in Oracle syntax
+<br><br>
+
 
 
 `dml.json`-
 contains DML  statements - specifically INSERT statements to populate tables. Structure is:   
 &nbsp;&nbsp;&nbsp;&nbsp;`metadata`: Batch information and execution statistics   
 &nbsp;&nbsp;&nbsp;&nbsp;`tables`: Object containing all table names with their INSERT statements
+<br><br>
 
 
 
@@ -31,6 +34,7 @@ Dev dataset containing question-query pairs. Each line has:
 &nbsp;&nbsp;&nbsp;&nbsp;`question`: Natural language question   
 &nbsp;&nbsp;&nbsp;&nbsp;`query`: Corresponding SQL query in Oracle syntax   
 &nbsp;&nbsp;&nbsp;&nbsp;`db_name`: Database name the query applies to   
+<br><br>
 
 
 
@@ -39,6 +43,7 @@ Training dataset with question-query pairs. Format is similar to `dev_pairs.json
 &nbsp;&nbsp;&nbsp;&nbsp;`question`: Natural language question   
 &nbsp;&nbsp;&nbsp;&nbsp;`query`: Oracle SQL query   
 &nbsp;&nbsp;&nbsp;&nbsp;`db_name`: Database name   
+<br><br>
 
 
 
@@ -47,6 +52,7 @@ Main training dataset with question-query pairs. Similar format as `dev_pairs.js
 &nbsp;&nbsp;&nbsp;&nbsp;`question`: Natural language question
 &nbsp;&nbsp;&nbsp;&nbsp;`query`: Oracle SQL query   
 &nbsp;&nbsp;&nbsp;&nbsp;`db_name`: Database name
+<br><br>
 
 ### Notes and Guidance
 * Run DDLs first to create and recreate objects; then run DML to populate data
