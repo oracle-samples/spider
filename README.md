@@ -1,44 +1,69 @@
-*This repository acts as a template for all of Oracle’s GitHub repositories. It contains information about the guidelines for those repositories. All files and sections contained in this template are mandatory, and a GitHub app ensures alignment with these guidelines. To get started with a new repository, replace the italic paragraphs with the respective text for your project.*
+# Spider 1.0 (Oracle Conversion)
 
-# Project name
+Converted version of the Spider 1.0 dataset for Oracle. This repository contains only data and usage notes. 
 
-*Describe your project's features, functionality and target audience*
+The original Spider dataset is here: 
+https://yale-lily.github.io/spider
 
 ## Installation
 
-*Provide detailed step-by-step installation instructions. You can name this section **How to Run** or **Getting Started** instead of **Installation** if that's more acceptable for your project*
+No software installation is required for this repository.
+Use the files directly with your existing Oracle tools and environment
 
 ## Documentation
 
-*Developer-oriented documentation can be published on GitHub, but all product documentation must be published on <https://docs.oracle.com>*
+### Dataset contents
+`ddl.jsonl` -
+contains DDL statements for creating database tables. Each line is a JSON object with:      
+&nbsp;&nbsp;&nbsp;&nbsp;`table`: Table name    
+&nbsp;&nbsp;&nbsp;&nbsp;`sql`: CREATE TABLE statement in Oracle syntax
 
-## Examples
 
-*Describe any included examples or provide a link to a demo/tutorial*
+`dml.json`-
+contains DML  statements - specifically INSERT statements to populate tables. Structure is:   
+&nbsp;&nbsp;&nbsp;&nbsp;`metadata`: Batch information and execution statistics   
+&nbsp;&nbsp;&nbsp;&nbsp;`tables`: Object containing all table names with their INSERT statements
 
-## Help
 
-*Inform users on where to get help or how to receive official support from Oracle (if applicable)*
 
-## Contributing
+`dev_pairs.jsonl` -
+Dev dataset containing question-query pairs. Each line has:    
+&nbsp;&nbsp;&nbsp;&nbsp;`question`: Natural language question   
+&nbsp;&nbsp;&nbsp;&nbsp;`query`: Corresponding SQL query in Oracle syntax   
+&nbsp;&nbsp;&nbsp;&nbsp;`db_name`: Database name the query applies to   
 
-*If your project has specific contribution requirements, update the CONTRIBUTING.md file to ensure those requirements are clearly explained*
 
-This project welcomes contributions from the community. Before submitting a pull request, please [review our contribution guide](./CONTRIBUTING.md)
+
+`train_others_pairs.jsonl` -
+Training dataset with question-query pairs. Format is similar to `dev_pairs.jsonl`:
+&nbsp;&nbsp;&nbsp;&nbsp;`question`: Natural language question   
+&nbsp;&nbsp;&nbsp;&nbsp;`query`: Oracle SQL query   
+&nbsp;&nbsp;&nbsp;&nbsp;`db_name`: Database name   
+
+
+
+`train_spider_pairs.jsonl`-
+Main training dataset with question-query pairs. Similar format as `dev_pairs.jsonl`   
+&nbsp;&nbsp;&nbsp;&nbsp;`question`: Natural language question
+&nbsp;&nbsp;&nbsp;&nbsp;`query`: Oracle SQL query   
+&nbsp;&nbsp;&nbsp;&nbsp;`db_name`: Database name
+
+### Notes and Guidance
+* Run DDLs first to create and recreate objects; then run DML to populate data
+
+* If you change schema or naming, apply a consistent prefix to table names in both `CREATE TABLE` and `INSERT INTO` statements
+
+* Use explicit date/time conversions (e.g., `TO_DATE`/`TO_TIMESTAMP`) rather than relying on session NLS settings
+
+* Use `executemany` to run speed up bulk inserts and updates
+
 
 ## Security
 
 Please consult the [security guide](./SECURITY.md) for our responsible security vulnerability disclosure process
 
 ## License
-
-*The correct copyright notice format for both documentation and software is*
-    "Copyright (c) [year,] year Oracle and/or its affiliates."
-*You must include the year the content was first released (on any platform) and the most recent year in which it was revised*
-
-Copyright (c) 2023 Oracle and/or its affiliates.
-
-*Replace this statement if your project is not licensed under the UPL*
+Copyright (c) 2025 Oracle and/or its affiliates.
 
 Released under the Universal Permissive License v1.0 as shown at
 <https://oss.oracle.com/licenses/upl/>.
