@@ -271,7 +271,6 @@
 {"question": "What is the maximum and minimum share for the TV series?", "query": "SELECT MAX(\"SHARE\"), MIN(\"SHARE\") FROM TVSHOW_TV_SERIES", "db_name": "tvshow"}
 {"question": "find id of the tv channels that from the countries where have more than two tv channels.", "query": "SELECT ID FROM TVSHOW_TV_CHANNEL WHERE COUNTRY IN (SELECT COUNTRY FROM TVSHOW_TV_CHANNEL GROUP BY COUNTRY HAVING COUNT(*) > 2)", "db_name": "tvshow"}
 {"question": "What are the ids of all tv channels that have more than 2 TV channels?", "query": "SELECT ID FROM TVSHOW_TV_CHANNEL WHERE COUNTRY IN (SELECT COUNTRY FROM TVSHOW_TV_CHANNEL GROUP BY COUNTRY HAVING COUNT(*) > 2)", "db_name": "tvshow"}
-{"question": "How many employees are there?", "query": "SELECT COUNT(*) FROM DRIVING_SCHOOL_STAFF", "db_name": "employee_hire_evaluation"}
 {"question": "How many high schoolers are there?", "query": "SELECT COUNT(*) FROM NETWORK_1_HIGHSCHOOLER", "db_name": "network_1"}
 {"question": "Count the number of high schoolers.", "query": "SELECT COUNT(*) FROM NETWORK_1_HIGHSCHOOLER", "db_name": "network_1"}
 {"question": "Show the names and grades of each high schooler.", "query": "SELECT NAME ,  GRADE FROM NETWORK_1_HIGHSCHOOLER", "db_name": "network_1"}
@@ -466,7 +465,6 @@
 {"question": "What is the name of the visitor who visited both a museum opened before 2009 and a museum opened after 2011?", "query": "SELECT T1.NAME FROM MUSEUM_VISIT_VISITOR T1 JOIN MUSEUM_VISIT_VISIT T2 ON T1.ID  =  T2.VISITOR_ID JOIN MUSEUM_VISIT_MUSEUM T3 ON T3.MUSEUM_ID  =  T2.MUSEUM_ID WHERE T3.OPEN_YEAR  <  2009 INTERSECT SELECT T1.NAME FROM MUSEUM_VISIT_VISITOR T1 JOIN MUSEUM_VISIT_VISIT T2 ON T1.ID  =  T2.VISITOR_ID JOIN MUSEUM_VISIT_MUSEUM T3 ON T3.MUSEUM_ID  =  T2.MUSEUM_ID WHERE T3.OPEN_YEAR  >  2011", "db_name": "museum_visit"}
 {"question": "Find the number of visitors who did not visit any museum opened after 2010.", "query": "SELECT COUNT(*) FROM MUSEUM_VISIT_VISITOR WHERE ID NOT IN (SELECT T2.VISITOR_ID FROM MUSEUM_VISIT_MUSEUM T1 JOIN MUSEUM_VISIT_VISIT T2 ON T1.MUSEUM_ID  =  T2.MUSEUM_ID WHERE T1.OPEN_YEAR  >  2010)", "db_name": "museum_visit"}
 {"question": "How many museums were opened after 2013 or before 2008?", "query": "SELECT COUNT(*) FROM MUSEUM_VISIT_MUSEUM WHERE OPEN_YEAR  >  2013 OR OPEN_YEAR  <  2008", "db_name": "museum_visit"}
-{"question": "How many flights do we have?", "query": "SELECT COUNT(*) FROM FLIGHT_1_FLIGHT", "db_name": "flight_2"}
 {"question": "How many conductors are there?", "query": "SELECT COUNT(*) FROM ORCHESTRA_CONDUCTOR", "db_name": "orchestra"}
 {"question": "Count the number of conductors.", "query": "SELECT COUNT(*) FROM ORCHESTRA_CONDUCTOR", "db_name": "orchestra"}
 {"question": "List the names of conductors in ascending order of age.", "query": "SELECT NAME FROM ORCHESTRA_CONDUCTOR ORDER BY AGE ASC", "db_name": "orchestra"}
@@ -619,7 +617,6 @@
 {"question": "What is the number of cars with a horsepower greater than 150?", "query": "SELECT COUNT(*) FROM CAR_1_CARS_DATA WHERE HORSEPOWER  >  150", "db_name": "car_1"}
 {"question": "What is the average horsepower of the cars before 1980?", "query": "SELECT AVG(HORSEPOWER) FROM CAR_1_CARS_DATA WHERE YEAR < 1980", "db_name": "car_1"}
 {"question": "What is the average horsepower for all cars produced before 1980 ?", "query": "SELECT AVG(HORSEPOWER) FROM CAR_1_CARS_DATA WHERE YEAR < 1980", "db_name": "car_1"}
-{"question": "Count the number of documents.", "query": "SELECT COUNT(*) FROM CRE_DOCS_AND_EPENSES_DOCUMENTS", "db_name": "cre_Doc_Template_Mgt"}
 {"question": "Find the total number of players.", "query": "SELECT COUNT(*) FROM WTA_1_PLAYERS", "db_name": "wta_1"}
 {"question": "How many players are there?", "query": "SELECT COUNT(*) FROM WTA_1_PLAYERS", "db_name": "wta_1"}
 {"question": "Find the total number of matches.", "query": "SELECT COUNT(*) FROM WTA_1_MATCHES", "db_name": "wta_1"}
@@ -646,7 +643,6 @@
 {"question": "What are the first names and country codes for players who won both the WTA Championships and the Australian Open?", "query": "SELECT T1.COUNTRY_CODE ,  T1.FIRST_NAME FROM WTA_1_PLAYERS T1 JOIN WTA_1_MATCHES T2 ON T1.PLAYER_ID  =  T2.WINNER_ID WHERE T2.TOURNEY_NAME  =  'WTA Championships' INTERSECT SELECT T1.COUNTRY_CODE ,  T1.FIRST_NAME FROM WTA_1_PLAYERS T1 JOIN WTA_1_MATCHES T2 ON T1.PLAYER_ID  =  T2.WINNER_ID WHERE T2.TOURNEY_NAME  =  'Australian Open'", "db_name": "wta_1"}
 {"question": "Find the first name and country code of the oldest player.", "query": "SELECT FIRST_NAME ,  COUNTRY_CODE FROM WTA_1_PLAYERS ORDER BY BIRTH_DATE FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
 {"question": "What is the first name and country code of the oldest player?", "query": "SELECT FIRST_NAME ,  COUNTRY_CODE FROM WTA_1_PLAYERS ORDER BY BIRTH_DATE FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
-{"question": "How many players are there?", "query": "SELECT COUNT(*) FROM RIDING_CLUB_PLAYER", "db_name": "wta_1"}
 {"question": "What is the total number of airlines?", "query": "SELECT COUNT(*) FROM FLIGHT_4_AIRLINES", "db_name": "flight_2"}
 {"question": "How many singers are there?", "query": "SELECT COUNT(*) FROM SINGER_SINGER", "db_name": "singer"}
 {"question": "What is the count of singers?", "query": "SELECT COUNT(*) FROM SINGER_SINGER", "db_name": "singer"}
@@ -759,7 +755,6 @@
 {"question": "List the airport code and name in the city of Anthony.", "query": "SELECT AIRPORTCODE ,  AIRPORTNAME FROM FLIGHT_2_AIRPORTS WHERE CITY  =  'Anthony'", "db_name": "flight_2"}
 {"question": "Give the airport code and airport name corresonding to the city Anthony.", "query": "SELECT AIRPORTCODE ,  AIRPORTNAME FROM FLIGHT_2_AIRPORTS WHERE CITY  =  'Anthony'", "db_name": "flight_2"}
 {"question": "How many airlines do we have?", "query": "SELECT COUNT(*) FROM FLIGHT_2_AIRLINES", "db_name": "flight_2"}
-{"question": "What is the total number of airlines?", "query": "SELECT COUNT(*) FROM FLIGHT_2_AIRLINES", "db_name": "flight_2"}
 {"question": "How many airports do we have?", "query": "SELECT COUNT(*) FROM FLIGHT_2_AIRPORTS", "db_name": "flight_2"}
 {"question": "Return the number of  airports.", "query": "SELECT COUNT(*) FROM FLIGHT_2_AIRPORTS", "db_name": "flight_2"}
 {"question": "How many flights do we have?", "query": "SELECT COUNT(*) FROM FLIGHT_2_FLIGHTS", "db_name": "flight_2"}
@@ -1002,3 +997,38 @@
 {"question": "What are the names of people who do not play poker?", "query": "SELECT NAME FROM POKER_PLAYER_PEOPLE WHERE PEOPLE_ID NOT IN (SELECT PEOPLE_ID FROM POKER_PLAYER_POKER_PLAYER)", "db_name": "poker_player"}
 {"question": "How many distinct nationalities are there?", "query": "SELECT COUNT(DISTINCT NATIONALITY) FROM POKER_PLAYER_PEOPLE", "db_name": "poker_player"}
 {"question": "Count the number of different nationalities.", "query": "SELECT COUNT(DISTINCT NATIONALITY) FROM POKER_PLAYER_PEOPLE", "db_name": "poker_player"}
+{"question": "What is the code of the country with the most players?", "query": "SELECT COUNTRY_CODE FROM WTA_1_PLAYERS GROUP BY COUNTRY_CODE ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "Find the first name, country code and birth date of the winner who has the highest rank points in all matches.", "query": "SELECT T1.FIRST_NAME, T1.COUNTRY_CODE, TO_CHAR(T1.BIRTH_DATE, 'YYYYMMDD') as BIRTH_DATE FROM WTA_1_PLAYERS T1 JOIN WTA_1_MATCHES T2 ON T1.PLAYER_ID = T2.WINNER_ID ORDER BY T2.WINNER_RANK_POINTS DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "find the code of the country where has the greatest number of players.", "query": "SELECT COUNTRY_CODE FROM WTA_1_PLAYERS GROUP BY COUNTRY_CODE ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "What is the first name, country code, and birth date of the player with the most winner rank points across all matches?", "query": "SELECT T1.FIRST_NAME, T1.COUNTRY_CODE, TO_CHAR(T1.BIRTH_DATE, 'YYYYMMDD') as BIRTH_DATE FROM WTA_1_PLAYERS T1 JOIN WTA_1_MATCHES T2 ON T1.PLAYER_ID = T2.WINNER_ID ORDER BY T2.WINNER_RANK_POINTS DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "What is the first name and country code of the player with the most tours?", "query": "SELECT T1.COUNTRY_CODE, T1.FIRST_NAME FROM WTA_1_PLAYERS T1 JOIN WTA_1_RANKINGS T2 ON T1.PLAYER_ID = T2.PLAYER_ID ORDER BY T2.TOURS DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "Find the number of matches happened in each year.", "query": "SELECT COUNT(*), YEAR FROM WTA_1_MATCHES GROUP BY YEAR", "db_name": "wta_1"}
+{"question": "Find the name and rank of the 3 youngest winners across all matches.", "query": "SELECT DISTINCT WINNER_NAME, WINNER_RANK, WINNER_AGE FROM WTA_1_MATCHES ORDER BY WINNER_AGE FETCH FIRST 3 ROWS ONLY", "db_name": "wta_1"}
+{"question": "find the number of players for each country.", "query": "SELECT COUNT(*), COUNTRY_CODE FROM WTA_1_PLAYERS GROUP BY COUNTRY_CODE", "db_name": "wta_1"}
+{"question": "List the first and last name of all players in the order of birth date.", "query": "SELECT FIRST_NAME, LAST_NAME FROM WTA_1_PLAYERS ORDER BY BIRTH_DATE", "db_name": "wta_1"}
+{"question": "Which year had the most matches?", "query": "SELECT YEAR FROM WTA_1_MATCHES GROUP BY YEAR ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "Find the name of the winner who has the highest rank points and participated in the Australian Open tourney.", "query": "SELECT WINNER_NAME FROM WTA_1_MATCHES WHERE TOURNEY_NAME = 'Australian Open' ORDER BY WINNER_RANK_POINTS DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "find the names of loser and winner who played in the match with greatest number of minutes.", "query": "SELECT WINNER_NAME, LOSER_NAME FROM WTA_1_MATCHES ORDER BY MINUTES DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "Find the number of players for each hand type.", "query": "SELECT COUNT(*), HAND FROM WTA_1_PLAYERS GROUP BY HAND", "db_name": "wta_1"}
+{"question": "What are the codes of countries with more than 50 players?", "query": "SELECT COUNTRY_CODE FROM WTA_1_PLAYERS GROUP BY COUNTRY_CODE HAVING COUNT(*) > 50", "db_name": "wta_1"}
+{"question": "Find the name and rank points of the winner who won the most times.", "query": "SELECT WINNER_NAME, MAX(WINNER_RANK_POINTS) as WINNER_RANK_POINTS FROM WTA_1_MATCHES GROUP BY WINNER_NAME ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "What are the names of the winner and loser who played in the longest match?", "query": "SELECT WINNER_NAME, LOSER_NAME FROM WTA_1_MATCHES ORDER BY MINUTES DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "Find the codes of countries that have more than 50 players.", "query": "SELECT COUNTRY_CODE FROM WTA_1_PLAYERS GROUP BY COUNTRY_CODE HAVING COUNT(*) > 50", "db_name": "wta_1"}
+{"question": "What is the name of the winner with the most rank points who participated in the Australian Open tournament?", "query": "SELECT WINNER_NAME FROM WTA_1_MATCHES WHERE TOURNEY_NAME = 'Australian Open' ORDER BY WINNER_RANK_POINTS DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "Find the number of left handed winners who participated in the WTA Championships.", "query": "SELECT COUNT(DISTINCT WINNER_NAME) FROM WTA_1_MATCHES WHERE TOURNEY_NAME = 'WTA Championships' AND WINNER_HAND = 'L'", "db_name": "wta_1"}
+{"question": "Find the total ranking points for each player and their first name.", "query": "SELECT SUM(RANKING_POINTS), T1.FIRST_NAME FROM WTA_1_PLAYERS T1 JOIN WTA_1_RANKINGS T2 ON T1.PLAYER_ID = T2.PLAYER_ID GROUP BY T1.FIRST_NAME", "db_name": "wta_1"}
+{"question": "Find the first name and country code of the player who did the most number of tours.", "query": "SELECT T1.COUNTRY_CODE, T1.FIRST_NAME FROM WTA_1_PLAYERS T1 JOIN WTA_1_RANKINGS T2 ON T1.PLAYER_ID = T2.PLAYER_ID ORDER BY T2.TOURS DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "What are the names and ranks of the three youngest winners across all matches?", "query": "SELECT DISTINCT WINNER_NAME, WINNER_RANK, WINNER_AGE FROM WTA_1_MATCHES ORDER BY WINNER_AGE FETCH FIRST 3 ROWS ONLY", "db_name": "wta_1"}
+{"question": "Find the average ranking for each player and their first name.", "query": "SELECT ROUND(AVG(RANKING), 1), T1.FIRST_NAME FROM WTA_1_PLAYERS T1 JOIN WTA_1_RANKINGS T2 ON T1.PLAYER_ID = T2.PLAYER_ID GROUP BY T1.FIRST_NAME", "db_name": "wta_1"}
+{"question": "Find the total number of tours for each ranking date.", "query": "SELECT SUM(TOURS), RANKING_DATE FROM WTA_1_RANKINGS GROUP BY RANKING_DATE", "db_name": "wta_1"}
+{"question": "How many players are there for each hand type?", "query": "SELECT COUNT(*), HAND FROM WTA_1_PLAYERS GROUP BY HAND", "db_name": "wta_1"}
+{"question": "What are the full names of all left handed players, in order of birth date?", "query": "SELECT FIRST_NAME, LAST_NAME FROM WTA_1_PLAYERS WHERE HAND = 'L' ORDER BY BIRTH_DATE", "db_name": "wta_1"}
+{"question": "How many total tours were there for each ranking date?", "query": "SELECT SUM(TOURS), RANKING_DATE FROM WTA_1_RANKINGS GROUP BY RANKING_DATE", "db_name": "wta_1"}
+{"question": "List the first and last name of all players who are left / L hand in the order of birth date.", "query": "SELECT FIRST_NAME, LAST_NAME FROM WTA_1_PLAYERS WHERE HAND = 'L' ORDER BY BIRTH_DATE", "db_name": "wta_1"}
+{"question": "What are the first names of all players, and their total ranking points?", "query": "SELECT SUM(RANKING_POINTS), T1.FIRST_NAME FROM WTA_1_PLAYERS T1 JOIN WTA_1_RANKINGS T2 ON T1.PLAYER_ID = T2.PLAYER_ID GROUP BY T1.FIRST_NAME", "db_name": "wta_1"}
+{"question": "How many matches were played in each year?", "query": "SELECT COUNT(*), YEAR FROM WTA_1_MATCHES GROUP BY YEAR", "db_name": "wta_1"}
+{"question": "Find the year that has the most number of matches.", "query": "SELECT YEAR FROM WTA_1_MATCHES GROUP BY YEAR ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "What are the first names of all players, and their average rankings?", "query": "SELECT ROUND(AVG(RANKING), 1), T1.FIRST_NAME FROM WTA_1_PLAYERS T1 JOIN WTA_1_RANKINGS T2 ON T1.PLAYER_ID = T2.PLAYER_ID GROUP BY T1.FIRST_NAME", "db_name": "wta_1"}
+{"question": "What are the full names of all players, sorted by birth date?", "query": "SELECT FIRST_NAME, LAST_NAME FROM WTA_1_PLAYERS ORDER BY BIRTH_DATE", "db_name": "wta_1"}
+{"question": "What is the name of the winner who has won the most matches, and how many rank points does this player have?", "query": "SELECT WINNER_NAME, WINNER_RANK_POINTS FROM WTA_1_MATCHES GROUP BY WINNER_NAME, WINNER_RANK_POINTS ORDER BY COUNT(*) DESC FETCH FIRST 1 ROWS ONLY", "db_name": "wta_1"}
+{"question": "How many different winners both participated in the WTA Championships and were left handed?", "query": "SELECT COUNT(DISTINCT WINNER_NAME) FROM WTA_1_MATCHES WHERE TOURNEY_NAME = 'WTA Championships' AND WINNER_HAND = 'L'", "db_name": "wta_1"}
